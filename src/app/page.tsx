@@ -1,102 +1,117 @@
-import Image from "next/image";
+import Navigation from '@/components/Navigation';
+import CharacterSearch from '@/components/CharacterSearch';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen">
+      <Navigation />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <main className="container mx-auto px-4 py-12">
+        {/* 히어로 섹션 */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-blue-500 mb-6">
+            메이플스토리M
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+              트래커
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            캐릭터와 길드 정보를 실시간으로 조회하고, 최신 공지사항과 이벤트
+            정보를 한눈에 확인하세요
+          </p>
+        </div>
+
+        {/* 캐릭터 검색 섹션 */}
+        <div className="mb-20">
+          <CharacterSearch />
+        </div>
+
+        {/* 기능 소개 섹션 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">👤</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                캐릭터 조회
+              </h3>
+              <p className="text-gray-600">
+                캐릭터명으로 레벨, 직업, 길드 등 상세 정보를 실시간으로 조회할
+                수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🏰</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                길드 정보
+              </h3>
+              <p className="text-gray-600">
+                길드명으로 길드 레벨, 마스터, 멤버 수 등 길드 관련 정보를 확인할
+                수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">📰</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                최신 정보
+              </h3>
+              <p className="text-gray-600">
+                공지사항, 패치노트, 진행중인 이벤트 등 최신 정보를 빠르게 확인할
+                수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 통계 섹션 */}
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">
+            서비스 현황
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">1,234</div>
+              <div className="text-gray-600">조회된 캐릭터</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">567</div>
+              <div className="text-gray-600">조회된 길드</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 mb-2">89</div>
+              <div className="text-gray-600">진행중 이벤트</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">
+                24/7
+              </div>
+              <div className="text-gray-600">실시간 업데이트</div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* 푸터 */}
+      <footer className="bg-gray-800 text-white py-8 mt-20">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-400">
+            © 2024 메이플스토리M 트래커. 모든 권리 보유.
+          </p>
+          <p className="text-gray-500 text-sm mt-2">
+            이 서비스는 메이플스토리M의 비공식 팬 사이트입니다.
+          </p>
+        </div>
       </footer>
     </div>
   );
