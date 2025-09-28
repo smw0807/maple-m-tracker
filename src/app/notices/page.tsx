@@ -1,8 +1,10 @@
 import Navigation from '@/components/Navigation';
 import { getNotices } from '@/lib/api';
+import { GET } from '@/app/api/notice/list';
 
 export default async function NoticesPage() {
   const notices = await getNotices();
+  const list = await GET();
 
   return (
     <div className="min-h-screen">
