@@ -19,15 +19,6 @@ export interface GuildInfo {
   // 추가 필드들...
 }
 
-export interface NoticeItem {
-  id: string;
-  title: string;
-  content: string;
-  date: string;
-  type: 'notice' | 'event' | 'maintenance';
-  url?: string;
-}
-
 export interface PatchNoteItem {
   id: string;
   version: string;
@@ -117,35 +108,6 @@ export async function getGuildInfo(guildName: string): Promise<GuildInfo> {
   } catch (error) {
     console.error('길드 정보 조회 실패:', error);
     throw new Error('길드 정보를 가져올 수 없습니다.');
-  }
-}
-
-// 공지사항 조회 (웹 스크래핑 또는 RSS 피드 사용)
-export async function getNotices(): Promise<NoticeItem[]> {
-  try {
-    // 실제로는 메이플스토리M 공식 사이트의 공지사항을 스크래핑하거나
-    // RSS 피드를 파싱해야 합니다
-    const mockNotices: NoticeItem[] = [
-      {
-        id: '1',
-        title: '메이플스토리M 정기 점검 안내',
-        content: '정기 점검으로 인한 서비스 일시 중단 안내입니다.',
-        date: '2024-01-15',
-        type: 'maintenance',
-      },
-      {
-        id: '2',
-        title: '신규 이벤트 시작!',
-        content: '새로운 이벤트가 시작되었습니다.',
-        date: '2024-01-14',
-        type: 'event',
-      },
-    ];
-
-    return mockNotices;
-  } catch (error) {
-    console.error('공지사항 조회 실패:', error);
-    return [];
   }
 }
 

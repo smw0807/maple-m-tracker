@@ -1,11 +1,10 @@
-import Navigation from '@/components/Navigation';
-import { getNotices } from '@/lib/api';
+import Link from 'next/link';
 import { GET } from '@/app/api/notice/list';
+import Navigation from '@/components/Navigation';
+import { NoticeResponse } from '@/model/notice';
 
 export default async function NoticesPage() {
-  const notices = await getNotices();
-  const list = await GET();
-
+  const data: NoticeResponse = await GET();
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -21,81 +20,58 @@ export default async function NoticesPage() {
             </p>
           </div>
 
-          <div className="space-y-6">
-            {notices.map((notice) => (
+          <div className="space-y-4">
+            {data.notice.map((notice) => (
               <div
-                key={notice.id}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300"
+                key={notice.notice_id}
+                className="bg-white rounded-lg shadow-md border border-gray-200 p-5 hover:shadow-lg transition-all duration-200 hover:border-blue-300"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl">
-                      {notice.type === 'maintenance'
-                        ? '🔧'
-                        : notice.type === 'event'
-                        ? '🎉'
-                        : '📢'}
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        {notice.title}
-                      </h3>
-                      <p className="text-sm text-gray-500">
-                        {new Date(notice.date).toLocaleDateString('ko-KR')}
-                      </p>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <span className="text-xl">📢</span>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-gray-800 leading-tight">
+                          {notice.title}
+                        </h3>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {new Date(notice.date).toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      notice.type === 'maintenance'
-                        ? 'bg-orange-100 text-orange-800'
-                        : notice.type === 'event'
-                        ? 'bg-purple-100 text-purple-800'
-                        : 'bg-blue-100 text-blue-800'
-                    }`}
+                  <Link
+                    href={`/notices/${notice.notice_id}`}
+                    rel="noopener noreferrer"
+                    className="ml-4 flex-shrink-0 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
                   >
-                    {notice.type === 'maintenance'
-                      ? '점검'
-                      : notice.type === 'event'
-                      ? '이벤트'
-                      : '공지'}
-                  </span>
-                </div>
-
-                <p className="text-gray-700 leading-relaxed">
-                  {notice.content}
-                </p>
-
-                {notice.url && (
-                  <div className="mt-4">
-                    <a
-                      href={notice.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+                    자세히 보기
+                    <svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      자세히 보기
-                      <svg
-                        className="w-4 h-4 ml-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                )}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
 
-          {notices.length === 0 && (
+          {data.notice.length === 0 && (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">📭</div>
               <h3 className="text-xl font-semibold text-gray-600 mb-2">

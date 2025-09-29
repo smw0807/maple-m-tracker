@@ -1,1 +1,84 @@
 @import 'tailwindcss';
+
+/* 공지사항 상세 페이지 스타일링 */
+.notice-content {
+  line-height: 1.8;
+  color: #374151;
+}
+
+.notice-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+.notice-content div {
+  margin-bottom: 1rem;
+}
+
+.notice-content span {
+  display: inline;
+}
+
+.notice-content b {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.notice-content .highlight-red {
+  background-color: #d92222;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.notice-content .highlight-blue {
+  color: #ab0000;
+  font-weight: 600;
+}
+
+.notice-content .highlight-orange {
+  color: #e56e70;
+  font-weight: 600;
+}
+
+/* 메이플스토리M 특화 스타일 */
+.notice-content .gm-signature {
+  text-align: right;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e5e7eb;
+  font-style: italic;
+  color: #000000;
+}
+
+/* 반응형 이미지 */
+@media (max-width: 768px) {
+  .notice-content img {
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
+  .notice-content {
+    font-size: 0.95rem;
+  }
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .notice-content {
+    color: #d1d5db;
+  }
+
+  .notice-content b {
+    color: #f9fafb;
+  }
+
+  .notice-content .gm-signature {
+    border-top-color: #374151;
+    color: #000000;
+  }
+}
