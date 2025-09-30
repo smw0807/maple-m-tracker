@@ -61,7 +61,7 @@ export default async function NoticePage({
           </div>
 
           {/* 콘텐츠 */}
-          <div className="px-8 py-8">
+          <div className="px-8 py-8 bg-black">
             <div
               className="prose prose-lg max-w-none notice-content"
               dangerouslySetInnerHTML={{ __html: processedContent }}
