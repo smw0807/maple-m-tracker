@@ -24,6 +24,7 @@ export default async function NoticesPage() {
             {data.notice.map((notice) => (
               <ListCard
                 key={notice.notice_id}
+                icon="📢"
                 title={notice.title}
                 date={notice.date}
                 link={`/notices/${notice.notice_id}`}

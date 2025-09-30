@@ -1,17 +1,18 @@
 import Link from 'next/link';
 
 interface ListCardProps {
+  icon: string;
   title: string;
   date: string;
   link: string;
 }
-export default function ListCard({ title, date, link }: ListCardProps) {
+export default function ListCard({ icon, title, date, link }: ListCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-md border border-gray-200 p-5 hover:shadow-lg transition-all duration-200 hover:border-blue-300">
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center space-x-3 mb-2">
-            <span className="text-xl">📢</span>
+            <span className="text-xl">{icon}</span>
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-gray-800 leading-tight">
                 {title}

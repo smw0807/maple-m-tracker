@@ -26,6 +26,7 @@ export default async function PatchNotesPage() {
             {data.patch_notice.map((patch) => (
               <ListCard
                 key={patch.notice_id}
+                icon="📝"
                 title={patch.title}
                 date={patch.date}
                 link={`/patchnotes/${patch.notice_id}`}
