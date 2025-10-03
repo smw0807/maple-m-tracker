@@ -1,7 +1,8 @@
-import Navigation from '@/components/Navigation';
-import ListCard from '@/components/card/ListCard';
 import { GET } from '../api/event/list';
 import { EventResponse } from '@/model/event';
+
+import Navigation from '@/components/Navigation';
+import ListCard from '@/components/card/ListCard';
 
 export default async function EventsPage() {
   const data: EventResponse = await GET();

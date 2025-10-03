@@ -8,3 +8,10 @@ export interface PatchNoteItem {
 export interface PatchNoteResponse {
   patch_notice: PatchNoteItem[];
 }
+
+export interface PatchNoteDetail {
+  title: string;
+  url: string;
+  contents: string;
+  date: string;
+}

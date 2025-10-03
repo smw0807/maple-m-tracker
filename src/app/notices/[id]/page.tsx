@@ -1,5 +1,6 @@
 import { GET } from '@/app/api/notice/detail';
 import { NoticeDetail } from '@/model/notice';
+
 import BackLink from '@/components/detail/BackLink';
 import Footer from '@/components/detail/Footer';
 import Main from '@/components/detail/Main';

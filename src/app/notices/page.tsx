@@ -1,6 +1,7 @@
 import { GET } from '@/app/api/notice/list';
-import Navigation from '@/components/Navigation';
 import { NoticeResponse } from '@/model/notice';
+
+import Navigation from '@/components/Navigation';
 import ListCard from '@/components/card/ListCard';
 
 export default async function NoticesPage() {
