@@ -5,8 +5,19 @@ import { useRouter } from 'next/navigation';
 
 export default function CharacterSearch() {
   const [characterName, setCharacterName] = useState('');
+  const [selectedServer, setSelectedServer] = useState('스카니아');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  const servers = [
+    '아케인',
+    '크로아',
+    '엘리시움',
+    '루나',
+    '스카니아',
+    '유니온',
+    '제니스',
+  ];
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,30 +45,63 @@ export default function CharacterSearch() {
         </div>
 
         <form onSubmit={handleSearch} className="space-y-6">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <svg
-                className="h-5 w-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          <div className="flex gap-3">
+            {/* 서버 선택 셀렉트박스 */}
+            <div className="relative">
+              <select
+                value={selectedServer}
+                onChange={(e) => setSelectedServer(e.target.value)}
+                className="appearance-none bg-white border border-gray-300 rounded-xl px-4 py-4 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 min-w-[120px] cursor-pointer"
+                disabled={isLoading}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+                {servers.map((server) => (
+                  <option key={server} value={server}>
+                    {server}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <svg
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                  stroke="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
             </div>
-            <input
-              type="text"
-              value={characterName}
-              onChange={(e) => setCharacterName(e.target.value)}
-              placeholder="캐릭터명을 입력하세요"
-              className="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
-              disabled={isLoading}
-            />
+
+            {/* 캐릭터명 입력칸 */}
+            <div className="relative flex-1">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                value={characterName}
+                onChange={(e) => setCharacterName(e.target.value)}
+                placeholder="캐릭터명을 입력하세요"
+                className="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                disabled={isLoading}
+              />
+            </div>
           </div>
 
           <button
