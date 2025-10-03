@@ -1,7 +1,8 @@
 import { GET } from '@/app/api/event/detail';
-import { formatKoreanDate, processContent } from '@/lib/html-utils';
 import { EventDetail } from '@/model/event';
-import Link from 'next/link';
+import BackLink from '@/components/detail/BackLink';
+import Footer from '@/components/detail/Footer';
+import Main from '@/components/detail/Main';
 
 export default async function EventPage({
   params,
@@ -11,82 +12,23 @@ export default async function EventPage({
   const { id } = await params;
   const data: EventDetail = await GET(id);
 
-  // HTML 콘텐츠 처리
-  const processedContent = processContent(data.contents);
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* 뒤로가기 버튼 */}
-        <div className="mb-6">
-          <Link
-            href="/events"
-            className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition-colors duration-200"
-          >
-            <span className="text-lg">←</span>
-            <span className="font-medium">이벤트 목록으로 돌아가기</span>
-          </Link>
-        </div>
+        <BackLink href="/events" title="이벤트 목록으로 돌아가기" />
 
         {/* 메인 카드 */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          {/* 헤더 */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-                <span className="text-white/90 text-sm font-medium">
-                  이벤트
-                </span>
-              </div>
-              <Link
-                href={data.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-lg transition-colors duration-200"
-              >
-                <span className="text-sm">🔗</span>
-                <span className="text-sm">원문 보기</span>
-              </Link>
-            </div>
-
-            <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-              {data.title}
-            </h1>
-
-            <div className="flex items-center gap-2 mt-4 text-white/90">
-              <span className="text-sm">📅</span>
-              <span className="text-sm">{formatKoreanDate(data.date)}</span>
-            </div>
-          </div>
-
-          {/* 콘텐츠 */}
-          <div className="px-8 py-8 bg-black">
-            <div
-              className="prose prose-lg max-w-none notice-content"
-              dangerouslySetInnerHTML={{ __html: processedContent }}
-            />
-          </div>
-        </div>
+        <Main
+          HeaderTitle="이벤트"
+          HeaderUrl={data.url}
+          title={data.title}
+          date={data.date}
+          contents={data.contents}
+        />
 
         {/* 하단 액션 버튼들 */}
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/events"
-            className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-xl border border-gray-200 transition-colors duration-200 font-medium"
-          >
-            <span>←</span>
-            목록으로 돌아가기
-          </Link>
-          <Link
-            href={data.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl transition-colors duration-200 font-medium"
-          >
-            <span>🔗</span>
-            원문에서 보기
-          </Link>
-        </div>
+        <Footer backHref="/events" href={data.url} />
       </div>
     </div>
   );
