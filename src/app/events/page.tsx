@@ -13,11 +13,9 @@ export default async function EventsPage() {
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
-              🎉 이벤트 & 공지사항
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">🎉 이벤트</h1>
             <p className="text-gray-600">
-              메이플스토리M의 최신 이벤트와 공지사항을 확인하세요
+              메이플스토리M의 최신 이벤트를 확인하세요
             </p>
           </div>
 
