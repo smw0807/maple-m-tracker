@@ -30,9 +30,3 @@ export interface CharacterStat {
 export interface CharacterGuild {
   guild_name: string;
 }
-
-// V메트릭스 정보
-
-// HEXA매트릭스 스킬 정보
-
-// HEXA매트릭스 스탯 정보
