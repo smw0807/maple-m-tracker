@@ -1,30 +1,29 @@
-import { GET } from '@/app/api/notice/detail';
-import { NoticeDetail } from '@/model/notice';
-import { processContent, formatKoreanDate } from '@/lib/html-utils';
+import { GET } from '@/app/api/event/detail';
+import { formatKoreanDate, processContent } from '@/lib/html-utils';
+import { EventDetail } from '@/model/event';
 import Link from 'next/link';
 
-export default async function NoticePage({
+export default async function EventPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const data: NoticeDetail = await GET(id);
+  const data: EventDetail = await GET(id);
 
   // HTML 콘텐츠 처리
   const processedContent = processContent(data.contents);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* 뒤로가기 버튼 */}
         <div className="mb-6">
           <Link
-            href="/notices"
+            href="/events"
             className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition-colors duration-200"
           >
             <span className="text-lg">←</span>
-            <span className="font-medium">공지사항 목록으로 돌아가기</span>
+            <span className="font-medium">이벤트 목록으로 돌아가기</span>
           </Link>
         </div>
 
@@ -36,7 +35,7 @@ export default async function NoticePage({
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-white rounded-full"></div>
                 <span className="text-white/90 text-sm font-medium">
-                  공지사항
+                  이벤트
                 </span>
               </div>
               <Link
@@ -72,7 +71,7 @@ export default async function NoticePage({
         {/* 하단 액션 버튼들 */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/notices"
+            href="/events"
             className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-xl border border-gray-200 transition-colors duration-200 font-medium"
           >
             <span>←</span>

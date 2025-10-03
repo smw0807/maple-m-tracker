@@ -5,7 +5,7 @@
 /**
  * HTML 콘텐츠를 정리하고 스타일링을 개선합니다
  */
-export function processNoticeContent(html: string): string {
+export function processContent(html: string): string {
   let processed = html;
 
   // 메이플스토리M 특화 스타일링 적용

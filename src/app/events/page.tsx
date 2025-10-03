@@ -26,7 +26,7 @@ export default async function EventsPage() {
                 key={event.notice_id}
                 icon="🎉"
                 title={event.title}
-                link={event.url}
+                link={`/events/${event.notice_id}`}
                 date={event.date}
               />
             ))}
