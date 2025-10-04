@@ -26,7 +26,11 @@ export default function CharacterSearch() {
     setIsLoading(true);
     try {
       // 캐릭터 검색 페이지로 이동
-      router.push(`/character/${encodeURIComponent(characterName.trim())}`);
+      router.push(
+        `/character/${encodeURIComponent(selectedServer)}/${encodeURIComponent(
+          characterName.trim()
+        )}`
+      );
     } catch (error) {
       console.error('검색 중 오류가 발생했습니다:', error);
     } finally {
