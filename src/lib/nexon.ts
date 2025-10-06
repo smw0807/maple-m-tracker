@@ -8,6 +8,7 @@ export async function _call(path: string, qs?: Record<string, string>) {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         ...(API_KEY && { 'x-nxopen-api-key': API_KEY }),
       },
     });
