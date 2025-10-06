@@ -1,24 +1,29 @@
-import { getOCID } from '@/app/api/character';
-import Navigation from '@/components/Navigation';
+import { getOCID, getCharacterBasic } from '@/app/api/character';
+import CharacterNotFound from '@/components/card/CharacterNotFound';
 
-interface CharacterPageProps {
-  params: {
-    server: string;
-    name: string;
-  };
-}
-
-export default async function CharacterPage({ params }: CharacterPageProps) {
-  const server = decodeURIComponent(params.server);
-  const characterName = decodeURIComponent(params.name);
-
-  const ocid = await getOCID(characterName, server);
-
-  console.log(ocid);
+export default async function CharacterPage({
+  params,
+}: {
+  params: Promise<{ server: string; name: string }>;
+}) {
+  const { server, name } = await params;
+  const serverName = decodeURIComponent(server);
+  const characterName = decodeURIComponent(name);
+  const ocid = await getOCID(characterName, serverName);
+  if (!ocid) {
+    return <CharacterNotFound />;
+  }
+  console.log('ocid', ocid);
+  // const characterBasic = await getCharacterBasic(ocid);
+  // console.log('characterBasic', characterBasic);
 
   return (
     <div className="min-h-screen">
-      <Navigation />
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          {characterName}
+        </h1>
+      </div>
     </div>
   );
 }
