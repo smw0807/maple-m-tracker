@@ -1,7 +1,6 @@
 import { GET } from '@/app/api/patchnote/list';
 import { PatchNoteResponse } from '@/model/patchnote';
 
-import Navigation from '@/components/Navigation';
 import ListCard from '@/components/card/ListCard';
 
 export default async function PatchNotesPage() {
@@ -9,8 +8,6 @@ export default async function PatchNotesPage() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
-
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">

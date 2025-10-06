@@ -1,15 +1,12 @@
 import { GET } from '../api/event/list';
 import { EventResponse } from '@/model/event';
 
-import Navigation from '@/components/Navigation';
 import ListCard from '@/components/card/ListCard';
 
 export default async function EventsPage() {
   const data: EventResponse = await GET();
   return (
     <div className="min-h-screen">
-      <Navigation />
-
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">

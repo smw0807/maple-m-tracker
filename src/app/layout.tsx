@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+import Navigation from '@/components/Navigation';
+
 export const metadata: Metadata = {
   title: '메이플스토리M 트래커',
   description:
@@ -23,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+        <Navigation />
         {children}
       </body>
     </html>

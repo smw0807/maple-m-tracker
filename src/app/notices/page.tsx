@@ -1,15 +1,12 @@
 import { GET } from '@/app/api/notice/list';
 import { NoticeResponse } from '@/model/notice';
 
-import Navigation from '@/components/Navigation';
 import ListCard from '@/components/card/ListCard';
 
 export default async function NoticesPage() {
   const data: NoticeResponse = await GET();
   return (
     <div className="min-h-screen">
-      <Navigation />
-
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
