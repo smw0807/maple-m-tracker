@@ -24,7 +24,7 @@ export default async function CharacterPage({
     return <CharacterNotFound />;
   }
 
-  const guild = await getGuild(ocid);
+  const guildName = await getGuild(ocid);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('ko-KR', {
@@ -59,9 +59,9 @@ export default async function CharacterPage({
                 <h1 className="text-3xl font-bold text-gray-800 mb-2">
                   {characterBasic.character_name}
                 </h1>
-                {guild.guild_name && (
+                {guildName && (
                   <h2 className="text-xl font-bold text-gray-800 mb-2">
-                    [{guild.guild_name}]
+                    [{guildName}]
                   </h2>
                 )}
               </div>

@@ -37,6 +37,21 @@ export async function getGuild(ocid: string) {
     const response = await _call('/maplestorym/v1/character/guild', {
       ocid,
     });
+    return response.guild_name;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}
+
+// 스탯 정보 조회
+export async function getStat(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/stat', {
+      ocid,
+    });
     return response;
   } catch (error) {
     if (error instanceof Error && error.message.includes('400')) {
