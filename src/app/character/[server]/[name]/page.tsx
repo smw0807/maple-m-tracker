@@ -86,13 +86,15 @@ export default async function CharacterPage({
                 <div>
                   <span className="text-gray-500">성별:</span>
                   <span className="ml-2 font-medium">
-                    {characterBasic.character_gender}
+                    {characterBasic.character_gender === 'Male'
+                      ? '남자'
+                      : '여자'}
                   </span>
                 </div>
                 <div>
                   <span className="text-gray-500">생성일:</span>
                   <span className="ml-2 font-medium">
-                    {formatDate(characterBasic.character_data_create)}
+                    {formatDate(characterBasic.character_date_create)}
                   </span>
                 </div>
                 <div>
