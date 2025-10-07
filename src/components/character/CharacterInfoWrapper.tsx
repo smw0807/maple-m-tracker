@@ -6,6 +6,7 @@ import CharacterInfoDisplay from './CharacterInfoDisplay';
 import Stats from './detail/Stats';
 import ItemEquipment from './detail/ItemEquipment';
 import CashItemEquipment from './detail/CashItemEquipment';
+import Symbol from './detail/Symbol';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -23,6 +24,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<CashItemEquipment ocid={ocid} />);
         break;
       case 'symbol':
+        setComponent(<Symbol ocid={ocid} />);
         break;
       case 'set-effect':
         break;
