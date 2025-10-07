@@ -5,6 +5,12 @@ import {
   CharacterEquipment,
   ItemEquipment as ItemEquipmentType,
 } from '@/model/character/equipment';
+import {
+  getGradeColor,
+  getGradeIcon,
+  getPotentialColor,
+  getPotentialGradeName,
+} from '@/lib/item-utils';
 import Image from 'next/image';
 
 export default function ItemEquipment({ ocid }: { ocid: string }) {
@@ -53,51 +59,6 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
       </div>
     );
   }
-
-  const getGradeColor = (grade: string) => {
-    switch (grade) {
-      case '레전더리':
-        return 'border-red-400 bg-red-50 text-red-800';
-      case '유니크':
-        return 'border-yellow-400 bg-yellow-50 text-yellow-800';
-      case '에픽':
-        return 'border-purple-400 bg-purple-50 text-purple-800';
-      case '레어':
-        return 'border-blue-400 bg-blue-50 text-blue-800';
-      default:
-        return 'border-gray-400 bg-gray-50 text-gray-800';
-    }
-  };
-
-  const getGradeIcon = (grade: string) => {
-    switch (grade) {
-      case '레전더리':
-        return '🔥';
-      case '유니크':
-        return '💎';
-      case '에픽':
-        return '💜';
-      case '레어':
-        return '💙';
-      default:
-        return '⚪';
-    }
-  };
-
-  const getPotentialColor = (grade: string) => {
-    switch (grade) {
-      case '4':
-        return 'text-red-600';
-      case '3':
-        return 'text-purple-600';
-      case '2':
-        return 'text-blue-600';
-      case '1':
-        return 'text-gray-600';
-      default:
-        return 'text-gray-500';
-    }
-  };
 
   const renderItem = (item: ItemEquipmentType) => {
     return (
@@ -164,13 +125,7 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
                     item.item_potential_option_grade
                   )}`}
                 >
-                  {item.item_potential_option_grade === '4'
-                    ? '레전더리'
-                    : item.item_potential_option_grade === '3'
-                    ? '유니크'
-                    : item.item_potential_option_grade === '2'
-                    ? '에픽'
-                    : '레어'}
+                  {getPotentialGradeName(item.item_potential_option_grade)}
                 </span>
               </div>
               <div className="space-y-1">
@@ -199,13 +154,9 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
                     item.item_additional_potential_option_grade
                   )}`}
                 >
-                  {item.item_additional_potential_option_grade === '4'
-                    ? '레전더리'
-                    : item.item_additional_potential_option_grade === '3'
-                    ? '유니크'
-                    : item.item_additional_potential_option_grade === '2'
-                    ? '에픽'
-                    : '레어'}
+                  {getPotentialGradeName(
+                    item.item_additional_potential_option_grade
+                  )}
                 </span>
               </div>
               <div className="space-y-1">

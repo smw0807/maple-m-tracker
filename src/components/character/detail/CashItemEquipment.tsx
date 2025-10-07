@@ -5,6 +5,7 @@ import {
   CharacterCashItemEquipment,
   CashItemEquipment as CashItemEquipmentType,
 } from '@/model/character/cash-item';
+import { getLabelColor, getSlotIcon, getGenderText } from '@/lib/item-utils';
 import Image from 'next/image';
 
 export default function CashItemEquipment({ ocid }: { ocid: string }) {
@@ -52,49 +53,6 @@ export default function CashItemEquipment({ ocid }: { ocid: string }) {
       </div>
     );
   }
-
-  const getSlotIcon = (slotName: string) => {
-    if (slotName.includes('모자')) return '👒';
-    if (slotName.includes('한벌옷')) return '👗';
-    if (slotName.includes('장갑')) return '🧤';
-    if (slotName.includes('신발')) return '👠';
-    if (slotName.includes('망토')) return '🦋';
-    if (slotName.includes('무기')) return '⚔️';
-    if (slotName.includes('반지')) return '💍';
-    if (slotName.includes('귀고리')) return '💎';
-    if (slotName.includes('눈장식')) return '👓';
-    if (slotName.includes('얼굴장식')) return '🎭';
-    if (slotName.includes('의자')) return '🪑';
-    if (slotName.includes('탈것')) return '🐎';
-    if (slotName.includes('이펙트')) return '✨';
-    return '🎁';
-  };
-
-  const getLabelColor = (label: string | null) => {
-    switch (label) {
-      case '블랙':
-        return 'bg-black text-white';
-      case '스페셜':
-        return 'bg-purple-500 text-white';
-      case '레어':
-        return 'bg-blue-500 text-white';
-      case '에픽':
-        return 'bg-purple-600 text-white';
-      default:
-        return 'bg-gray-500 text-white';
-    }
-  };
-
-  const getGenderText = (gender: string) => {
-    switch (gender) {
-      case 'Male':
-        return '남자';
-      case 'Female':
-        return '여자';
-      default:
-        return gender;
-    }
-  };
 
   const renderCashItem = (item: CashItemEquipmentType) => {
     return (
