@@ -4,7 +4,7 @@ import { getItemEquipment } from '@/app/api/character';
 import {
   CharacterEquipment,
   ItemEquipment as ItemEquipmentType,
-} from '@/model/charactor/equipment';
+} from '@/model/character/equipment';
 import Image from 'next/image';
 
 export default function ItemEquipment({ ocid }: { ocid: string }) {

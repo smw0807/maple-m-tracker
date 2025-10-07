@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { getStat } from '@/app/api/character';
-import { CharacterStat } from '@/model/charactor/charactor';
+import { CharacterStat } from '@/model/character/charactor';
 
 export default function Stats({ ocid }: { ocid: string }) {
   const [stat, setStat] = useState<CharacterStat | null>(null);
