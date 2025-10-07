@@ -8,6 +8,7 @@ import ItemEquipment from './detail/ItemEquipment';
 import CashItemEquipment from './detail/CashItemEquipment';
 import Symbol from './detail/Symbol';
 import SetEffect from './detail/SetEffect';
+import AndroidEquipment from './detail/AndroidEquipment';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -31,6 +32,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<SetEffect ocid={ocid} />);
         break;
       case 'android-equipment':
+        setComponent(<AndroidEquipment ocid={ocid} />);
         break;
       case 'jewel':
         break;
