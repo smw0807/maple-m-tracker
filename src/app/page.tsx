@@ -24,7 +24,7 @@ export default function Home() {
         </div>
 
         {/* 기능 소개 섹션 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -69,10 +69,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* 통계 섹션 */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+        {/* {/* <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
           <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">
             서비스 현황
           </h2>
@@ -96,7 +96,7 @@ export default function Home() {
               <div className="text-gray-600">실시간 업데이트</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
 
       {/* 푸터 */}
