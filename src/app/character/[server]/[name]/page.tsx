@@ -1,4 +1,4 @@
-import { getOCID, getCharacterBasic } from '@/app/api/character';
+import { getOCID, getCharacterBasic, getGuild } from '@/app/api/character';
 import CharacterNotFound from '@/components/card/CharacterNotFound';
 import CharacterInfoWrapper from '@/components/character/CharacterInfoWrapper';
 import Image from 'next/image';
@@ -20,10 +20,11 @@ export default async function CharacterPage({
   }
 
   const characterBasic = await getCharacterBasic(ocid);
-  console.log('characterBasic', characterBasic);
   if (!characterBasic) {
     return <CharacterNotFound />;
   }
+
+  const guild = await getGuild(ocid);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('ko-KR', {
@@ -54,9 +55,16 @@ export default async function CharacterPage({
               />
             </div>
             <div className="flex-1">
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                {characterBasic.character_name}
-              </h1>
+              <div className="flex items-center gap-2">
+                <h1 className="text-3xl font-bold text-gray-800 mb-2">
+                  {characterBasic.character_name}
+                </h1>
+                {guild.guild_name && (
+                  <h2 className="text-xl font-bold text-gray-800 mb-2">
+                    [{guild.guild_name}]
+                  </h2>
+                )}
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                 <div>
                   <span className="text-gray-500">월드:</span>
