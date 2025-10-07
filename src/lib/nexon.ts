@@ -1,5 +1,5 @@
-const API_URL = process.env.NEXON_API_URL;
-const API_KEY = process.env.NEXON_API_KEY;
+const API_URL = process.env.NEXT_PUBLIC_NEXON_API_URL;
+const API_KEY = process.env.NEXT_PUBLIC_NEXON_API_KEY;
 
 export async function _call(path: string, qs?: Record<string, string>) {
   const url = new URL(path, API_URL);
