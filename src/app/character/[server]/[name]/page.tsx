@@ -11,8 +11,6 @@ export default async function CharacterPage({
   const { server, name } = await params;
   const serverName = decodeURIComponent(server);
   const characterName = decodeURIComponent(name);
-  console.log('serverName', serverName);
-  console.log('characterName', characterName);
 
   const ocid = await getOCID(characterName, serverName);
   if (!ocid) {
