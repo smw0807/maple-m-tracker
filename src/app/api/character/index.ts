@@ -2,15 +2,12 @@ import { _call } from '@/lib/nexon';
 // 캐릭터 식별자 조회
 export async function getOCID(characterName: string, server: string) {
   try {
-    console.log('characterName', characterName);
-    console.log('server', server);
     const response = await _call('/maplestorym/v1/id', {
       character_name: characterName,
       world_name: server,
     });
-    console.log('response', response);
     return response.ocid;
-  } catch (error: unknown) {
+  } catch (error) {
     console.log('error', error);
     if (error instanceof Error && error.message.includes('400')) {
       return null;
