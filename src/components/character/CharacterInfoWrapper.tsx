@@ -7,6 +7,7 @@ import Stats from './detail/Stats';
 import ItemEquipment from './detail/ItemEquipment';
 import CashItemEquipment from './detail/CashItemEquipment';
 import Symbol from './detail/Symbol';
+import SetEffect from './detail/SetEffect';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -27,6 +28,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<Symbol ocid={ocid} />);
         break;
       case 'set-effect':
+        setComponent(<SetEffect ocid={ocid} />);
         break;
       case 'android-equipment':
         break;
