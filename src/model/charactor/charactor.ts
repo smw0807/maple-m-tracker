@@ -23,7 +23,7 @@ export interface Stat {
   stat_value: number; // 스탯 값
 }
 export interface CharacterStat {
-  stats: Stat[];
+  stat: Stat[];
 }
 
 // 가입 길드 정보
