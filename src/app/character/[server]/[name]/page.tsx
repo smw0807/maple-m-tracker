@@ -1,7 +1,6 @@
 import { getOCID, getCharacterBasic } from '@/app/api/character';
 import CharacterNotFound from '@/components/card/CharacterNotFound';
 import CharacterInfoWrapper from '@/components/character/CharacterInfoWrapper';
-import CharacterImage from '@/components/character/CharacterImage';
 import Image from 'next/image';
 
 export default async function CharacterPage({
@@ -114,14 +113,8 @@ export default async function CharacterPage({
           </div>
         </div>
 
-        {/* 3컬럼 레이아웃 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <CharacterInfoWrapper />
-          <CharacterImage
-            imageUrl={characterBasic.character_image}
-            characterName={characterBasic.character_name}
-          />
-        </div>
+        {/* 2컬럼 레이아웃 */}
+        <CharacterInfoWrapper />
       </div>
     </div>
   );

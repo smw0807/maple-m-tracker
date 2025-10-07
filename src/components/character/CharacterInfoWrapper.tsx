@@ -8,12 +8,16 @@ export default function CharacterInfoWrapper() {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <CharacterInfoPanel
-        onInfoSelect={setSelectedInfo}
-        selectedInfo={selectedInfo}
-      />
-      <CharacterInfoDisplay selectedInfo={selectedInfo} />
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="lg:col-span-1">
+        <CharacterInfoPanel
+          onInfoSelect={setSelectedInfo}
+          selectedInfo={selectedInfo}
+        />
+      </div>
+      <div className="lg:col-span-3">
+        <CharacterInfoDisplay selectedInfo={selectedInfo} />
+      </div>
     </div>
   );
 }

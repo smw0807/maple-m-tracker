@@ -1,10 +1,6 @@
 'use client';
 
-interface InfoButton {
-  id: string;
-  label: string;
-  icon: string;
-}
+import { INFO_BUTTONS } from './constants';
 
 interface CharacterInfoPanelProps {
   onInfoSelect: (infoType: string) => void;
@@ -15,25 +11,12 @@ export default function CharacterInfoPanel({
   onInfoSelect,
   selectedInfo,
 }: CharacterInfoPanelProps) {
-  const infoButtons: InfoButton[] = [
-    { id: 'equipment', label: '장비 정보', icon: '⚔️' },
-    { id: 'stat', label: '스탯 정보', icon: '📊' },
-    { id: 'hexa-matrix', label: '헥사 매트릭스', icon: '🔮' },
-    { id: 'symbol', label: '심볼 정보', icon: '⭐' },
-    { id: 'v-matrix', label: 'V 매트릭스', icon: '💎' },
-    { id: 'link-skill', label: '링크 스킬', icon: '🔗' },
-    { id: 'pet-equipment', label: '펫 장비', icon: '🐾' },
-    { id: 'android-equipment', label: '안드로이드 장비', icon: '🤖' },
-    { id: 'cash-item', label: '캐시 아이템', icon: '💰' },
-    { id: 'beauty-equipment', label: '뷰티 장비', icon: '💄' },
-  ];
-
   return (
-    <div className="lg:col-span-3">
+    <div>
       <div className="bg-white rounded-lg shadow-md p-4">
         <h2 className="text-lg font-semibold text-gray-800 mb-4">정보 조회</h2>
         <div className="space-y-2">
-          {infoButtons.map((button) => (
+          {INFO_BUTTONS.map((button) => (
             <button
               key={button.id}
               onClick={() => onInfoSelect(button.id)}
