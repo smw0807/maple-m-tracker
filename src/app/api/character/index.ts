@@ -60,3 +60,18 @@ export async function getStat(ocid: string) {
     throw error;
   }
 }
+
+// 장비 정보 조회
+export async function getItemEquipment(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/item-equipment', {
+      ocid,
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}

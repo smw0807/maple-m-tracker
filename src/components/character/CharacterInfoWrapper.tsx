@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import CharacterInfoPanel from './CharacterInfoPanel';
 import CharacterInfoDisplay from './CharacterInfoDisplay';
 import Stats from './detail/Stats';
+import ItemEquipment from './detail/ItemEquipment';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -15,6 +16,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<Stats ocid={ocid} />);
         break;
       case 'item-equipment':
+        setComponent(<ItemEquipment ocid={ocid} />);
         break;
       case 'cashitem-equipment':
         break;
