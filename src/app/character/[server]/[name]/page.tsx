@@ -122,7 +122,7 @@ export default async function CharacterPage({
         </div>
 
         {/* 2컬럼 레이아웃 */}
-        <CharacterInfoWrapper />
+        <CharacterInfoWrapper ocid={ocid} />
       </div>
     </div>
   );

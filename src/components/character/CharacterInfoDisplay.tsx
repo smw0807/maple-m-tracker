@@ -2,10 +2,12 @@ import { INFO_BUTTONS } from './constants';
 
 interface CharacterInfoDisplayProps {
   selectedInfo: string;
+  children: React.ReactNode;
 }
 
 export default function CharacterInfoDisplay({
   selectedInfo,
+  children,
 }: CharacterInfoDisplayProps) {
   const selectedButton = INFO_BUTTONS.find((b) => b.id === selectedInfo);
 
@@ -17,10 +19,14 @@ export default function CharacterInfoDisplay({
         </h2>
         <div className="min-h-96">
           {selectedInfo ? (
-            <div className="text-center text-gray-500 py-12">
-              <div className="text-4xl mb-4">{selectedButton?.icon}</div>
-              <p>{selectedButton?.label} 정보를 불러오는 중...</p>
-            </div>
+            children ? (
+              children
+            ) : (
+              <div className="text-center text-gray-500 py-12">
+                <div className="text-4xl mb-4">{selectedButton?.icon}</div>
+                <p>{selectedButton?.label} 정보를 불러오는 중...</p>
+              </div>
+            )
           ) : (
             <div className="text-center text-gray-500 py-12">
               <div className="text-4xl mb-4">📋</div>
