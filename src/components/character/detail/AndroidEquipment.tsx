@@ -22,5 +22,5 @@ export default function AndroidEquipment({ ocid }: { ocid: string }) {
     };
     fetchAndroidEquipment();
   }, [ocid]);
-  return <div>AndroidEquipment</div>;
+  return <div>준비중입니다...</div>;
 }
