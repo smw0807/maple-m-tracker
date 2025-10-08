@@ -84,7 +84,8 @@ export default function LinkSkill({ ocid }: { ocid: string }) {
             <Image
               src={skill.skill_icon}
               alt={skill.skill_name}
-              fill
+              width={48}
+              height={48}
               className="object-cover"
             />
           </div>
