@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     '패치노트',
     '이벤트',
   ],
+  other: {
+    'google-adsense-account': 'ca-pub-2744752399044248',
+  },
 };
 
 export default function RootLayout({
