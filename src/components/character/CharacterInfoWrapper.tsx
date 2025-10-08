@@ -12,7 +12,7 @@ import AndroidEquipment from './detail/AndroidEquipment';
 import Jewel from './detail/Jewel';
 import BeautyEquipment from './detail/BeautyEquipment';
 import PetEquipment from './detail/PetEquipment';
-
+import SkillEquipment from './detail/SkillEquipment';
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
   const [component, setComponent] = useState<React.ReactNode>(null);
@@ -47,6 +47,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<PetEquipment ocid={ocid} />);
         break;
       case 'skill-equipment':
+        setComponent(<SkillEquipment ocid={ocid} />);
         break;
       case 'link-skill':
         break;
