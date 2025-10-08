@@ -216,3 +216,18 @@ export async function getLinkSkill(ocid: string) {
     throw error;
   }
 }
+
+// 장착 V매트릭스 정보 조회
+export async function getVMatrix(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/vmatrix', {
+      ocid,
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}

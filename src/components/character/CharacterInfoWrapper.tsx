@@ -14,6 +14,7 @@ import BeautyEquipment from './detail/BeautyEquipment';
 import PetEquipment from './detail/PetEquipment';
 import SkillEquipment from './detail/SkillEquipment';
 import LinkSkill from './detail/LinkSkill';
+import VMatrix from './detail/VMatrix';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -55,6 +56,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<LinkSkill ocid={ocid} />);
         break;
       case 'vmatrix':
+        setComponent(<VMatrix ocid={ocid} />);
         break;
       case 'hexamatrix-skill':
         break;
