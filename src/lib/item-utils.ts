@@ -105,3 +105,29 @@ export const getGenderText = (gender: string) => {
       return gender;
   }
 };
+
+export const getColorIcon = (color: string | null) => {
+  if (!color) return '⚪';
+  switch (color) {
+    case '검은색':
+      return '⚫';
+    case '파란색':
+      return '🔵';
+    case '갈색':
+      return '🟤';
+    case '빨간색':
+      return '🔴';
+    case '초록색':
+      return '🟢';
+    case '노란색':
+      return '🟡';
+    case '보라색':
+      return '🟣';
+    case '핑크색':
+      return '🌸';
+    case '흰색':
+      return '⚪';
+    default:
+      return '🎨';
+  }
+};

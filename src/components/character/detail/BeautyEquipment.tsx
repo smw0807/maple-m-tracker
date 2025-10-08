@@ -6,6 +6,7 @@ import {
   CharacterHair,
   CharacterFace,
 } from '@/model/character/beauty-equipment';
+import { getGenderText, getColorIcon } from '@/lib/item-utils';
 
 export default function BeautyEquipment({ ocid }: { ocid: string }) {
   const [beautyEquipment, setBeautyEquipment] =
@@ -52,43 +53,6 @@ export default function BeautyEquipment({ ocid }: { ocid: string }) {
       </div>
     );
   }
-
-  const getGenderText = (gender: string) => {
-    switch (gender) {
-      case 'Male':
-        return '남자';
-      case 'Female':
-        return '여자';
-      default:
-        return gender;
-    }
-  };
-
-  const getColorIcon = (color: string | null) => {
-    if (!color) return '⚪';
-    switch (color) {
-      case '검은색':
-        return '⚫';
-      case '파란색':
-        return '🔵';
-      case '갈색':
-        return '🟤';
-      case '빨간색':
-        return '🔴';
-      case '초록색':
-        return '🟢';
-      case '노란색':
-        return '🟡';
-      case '보라색':
-        return '🟣';
-      case '핑크색':
-        return '🌸';
-      case '흰색':
-        return '⚪';
-      default:
-        return '🎨';
-    }
-  };
 
   const renderHair = (hair: CharacterHair, title: string) => {
     if (!hair.hair_name) {
