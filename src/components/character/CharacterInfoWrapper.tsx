@@ -13,6 +13,8 @@ import Jewel from './detail/Jewel';
 import BeautyEquipment from './detail/BeautyEquipment';
 import PetEquipment from './detail/PetEquipment';
 import SkillEquipment from './detail/SkillEquipment';
+import LinkSkill from './detail/LinkSkill';
+
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
   const [component, setComponent] = useState<React.ReactNode>(null);
@@ -50,6 +52,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<SkillEquipment ocid={ocid} />);
         break;
       case 'link-skill':
+        setComponent(<LinkSkill ocid={ocid} />);
         break;
       case 'vmatrix':
         break;

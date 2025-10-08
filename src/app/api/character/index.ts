@@ -201,3 +201,18 @@ export async function getSkillEquipment(ocid: string) {
     throw error;
   }
 }
+
+// 장착 링크 스킬 정보 조회
+export async function getLinkSkill(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/link-skill', {
+      ocid,
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}
