@@ -231,3 +231,33 @@ export async function getVMatrix(ocid: string) {
     throw error;
   }
 }
+
+// 장착 HEXA매트릭스 스킬 정보 조회
+export async function getHexaMatrixSkill(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/hexamatrix-skill', {
+      ocid,
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}
+
+// 장착 HEXA매트릭스 스탯 정보 조회
+export async function getHexaMatrixStat(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/hexamatrix-stat', {
+      ocid,
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}

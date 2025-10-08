@@ -15,12 +15,13 @@ import PetEquipment from './detail/PetEquipment';
 import SkillEquipment from './detail/SkillEquipment';
 import LinkSkill from './detail/LinkSkill';
 import VMatrix from './detail/VMatrix';
+import HexaMatrixSkill from './detail/HexaMatrixSkill';
+import HexaMatrixStat from './detail/HexaMatrixStat';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
   const [component, setComponent] = useState<React.ReactNode>(null);
   useEffect(() => {
-    console.log('ocid', ocid);
     switch (selectedInfo) {
       case 'stat':
         setComponent(<Stats ocid={ocid} />);
@@ -59,8 +60,10 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<VMatrix ocid={ocid} />);
         break;
       case 'hexamatrix-skill':
+        setComponent(<HexaMatrixSkill ocid={ocid} />);
         break;
       case 'hexamatrix-stat':
+        setComponent(<HexaMatrixStat ocid={ocid} />);
         break;
       default:
         setComponent(null);
