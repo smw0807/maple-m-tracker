@@ -145,18 +145,18 @@ export default function CharacterSearch() {
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
               <span>실시간 캐릭터 정보</span>
             </div>
-            <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
               <span>길드 정보 포함</span>
-            </div>
+            </div> */}
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
               <span>장비 및 스탯 조회</span>
             </div>
-            <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
               <span>최신 업데이트</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
