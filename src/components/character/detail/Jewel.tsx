@@ -7,7 +7,7 @@ import {
   JewelInfo,
 } from '@/model/character/jewel-equipment';
 import Image from 'next/image';
-import { getGradeColor } from '@/lib/item-utils';
+import { getGradeColor, getColorIcon, getColorBg } from '@/lib/item-utils';
 
 export default function Jewel({ ocid }: { ocid: string }) {
   const [jewel, setJewel] = useState<CharacterJewelEquipment | null>(null);
@@ -49,40 +49,6 @@ export default function Jewel({ ocid }: { ocid: string }) {
       </div>
     );
   }
-
-  const getColorIcon = (color: string) => {
-    switch (color) {
-      case '그린':
-        return '🟢';
-      case '옐로우':
-        return '🟡';
-      case '레드':
-        return '🔴';
-      case '블루':
-        return '🔵';
-      case '퍼플':
-        return '🟣';
-      default:
-        return '💎';
-    }
-  };
-
-  const getColorBg = (color: string) => {
-    switch (color) {
-      case '그린':
-        return 'bg-green-50 border-green-200';
-      case '옐로우':
-        return 'bg-yellow-50 border-yellow-200';
-      case '레드':
-        return 'bg-red-50 border-red-200';
-      case '블루':
-        return 'bg-blue-50 border-blue-200';
-      case '퍼플':
-        return 'bg-purple-50 border-purple-200';
-      default:
-        return 'bg-gray-50 border-gray-200';
-    }
-  };
 
   const getOptionColor = (option: string) => {
     if (option.includes('치명타')) return 'text-red-600';

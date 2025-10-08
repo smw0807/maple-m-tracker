@@ -16,6 +16,7 @@ export default function Symbol({ ocid }: { ocid: string }) {
       try {
         setLoading(true);
         const data = await getSymbol(ocid);
+        console.log('symbol', data);
         setSymbol(data);
       } catch (error) {
         console.error('심볼 정보를 불러오는데 실패했습니다:', error);
