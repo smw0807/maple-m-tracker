@@ -66,6 +66,7 @@ export default function CashItemEquipment({ ocid }: { ocid: string }) {
             <Image
               src={item.cash_item_icon}
               alt={item.cash_item_name}
+              sizes="48px"
               fill
               className="object-cover"
             />

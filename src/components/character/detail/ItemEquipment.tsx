@@ -73,6 +73,7 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
               src={item.item_icon}
               alt={item.item_name}
               fill
+              sizes="48px"
               className="object-cover"
             />
           </div>
