@@ -11,6 +11,7 @@ import SetEffect from './detail/SetEffect';
 import AndroidEquipment from './detail/AndroidEquipment';
 import Jewel from './detail/Jewel';
 import BeautyEquipment from './detail/BeautyEquipment';
+import PetEquipment from './detail/PetEquipment';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -43,6 +44,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<BeautyEquipment ocid={ocid} />);
         break;
       case 'pet-equipment':
+        setComponent(<PetEquipment ocid={ocid} />);
         break;
       case 'skill-equipment':
         break;
