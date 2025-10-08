@@ -24,6 +24,7 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
       try {
         setLoading(true);
         const data = await getItemEquipment(ocid);
+        console.log('itemEquipment', data);
         setItemEquipment(data);
       } catch (error) {
         console.error('장착 아이템 정보를 불러오는데 실패했습니다:', error);
@@ -59,6 +60,86 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
       </div>
     );
   }
+
+  // 아이템 카테고리 분류 함수
+  const getItemCategory = (
+    item: ItemEquipmentType
+  ): 'weapon' | 'equipment' | 'accessory' => {
+    const pageName = item.item_equipment_page_name;
+
+    // 무기
+    if (
+      pageName.includes('무기') ||
+      [
+        '너클',
+        '활',
+        '한손검',
+        '두손검',
+        '한손도끼',
+        '두손도끼',
+        '한손둔기',
+        '두손둔기',
+        '창',
+        '폴암',
+        '완드',
+        '스태프',
+        '대검',
+        '건',
+        '듀얼보우건',
+        '핸드캐넌',
+        '에너지소드',
+        'ESP리미터',
+        '체인',
+        '매직 건틀릿',
+        '부채',
+        '태도',
+        '장착',
+        '브레스 슈터',
+      ].includes(pageName)
+    ) {
+      return 'weapon';
+    }
+
+    // 장비
+    if (
+      [
+        '모자',
+        '상의',
+        '하의',
+        '한벌옷',
+        '신발',
+        '장갑',
+        '망토',
+        '어깨',
+        '벨트',
+      ].includes(pageName)
+    ) {
+      return 'equipment';
+    }
+
+    // 악세사리 (나머지 모두)
+    return 'accessory';
+  };
+
+  // 아이템 정렬 함수
+  const sortItems = (items: ItemEquipmentType[]) => {
+    const categorized = {
+      weapon: [] as ItemEquipmentType[],
+      equipment: [] as ItemEquipmentType[],
+      accessory: [] as ItemEquipmentType[],
+    };
+
+    items.forEach((item) => {
+      const category = getItemCategory(item);
+      categorized[category].push(item);
+    });
+
+    return [
+      ...categorized.weapon,
+      ...categorized.equipment,
+      ...categorized.accessory,
+    ];
+  };
 
   const renderItem = (item: ItemEquipmentType) => {
     return (
@@ -207,6 +288,8 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
     );
   };
 
+  const sortedItems = sortItems(itemEquipment.item_equipment);
+
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3 mb-6">
@@ -220,7 +303,7 @@ export default function ItemEquipment({ ocid }: { ocid: string }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {itemEquipment.item_equipment.map(renderItem)}
+        {sortedItems.map(renderItem)}
       </div>
     </div>
   );
