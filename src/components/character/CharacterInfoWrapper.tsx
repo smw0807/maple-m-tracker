@@ -10,6 +10,7 @@ import Symbol from './detail/Symbol';
 import SetEffect from './detail/SetEffect';
 import AndroidEquipment from './detail/AndroidEquipment';
 import Jewel from './detail/Jewel';
+import BeautyEquipment from './detail/BeautyEquipment';
 
 export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
   const [selectedInfo, setSelectedInfo] = useState<string>('');
@@ -39,6 +40,7 @@ export default function CharacterInfoWrapper({ ocid }: { ocid: string }) {
         setComponent(<Jewel ocid={ocid} />);
         break;
       case 'beauty-equipment':
+        setComponent(<BeautyEquipment ocid={ocid} />);
         break;
       case 'pet-equipment':
         break;

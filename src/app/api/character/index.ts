@@ -156,3 +156,18 @@ export async function getJewel(ocid: string) {
     throw error;
   }
 }
+
+// 장착 헤어, 성형, 피부 정보 조회
+export async function getBeautyEquipment(ocid: string) {
+  try {
+    const response = await _call('/maplestorym/v1/character/beauty-equipment', {
+      ocid,
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('400')) {
+      return null;
+    }
+    throw error;
+  }
+}
