@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     '패치노트',
     '이벤트',
   ],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   other: {
     'google-adsense-account': 'ca-pub-2744752399044248',
   },
