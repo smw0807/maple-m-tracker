@@ -8,15 +8,8 @@ import Script from 'next/script';
 export const metadata: Metadata = {
   title: '메이플스토리M 트래커',
   description:
-    '메이플스토리M 캐릭터, 길드 조회 및 공지사항, 패치노트, 진행중 이벤트 정보 제공',
-  keywords: [
-    '메이플스토리M',
-    '캐릭터 조회',
-    '길드 조회',
-    '공지사항',
-    '패치노트',
-    '이벤트',
-  ],
+    '메이플스토리M 캐릭터 및 최신 공지사항, 패치노트, 진행중 이벤트 정보 제공',
+  keywords: ['메이플스토리M', '캐릭터 조회', '공지사항', '패치노트', '이벤트'],
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
