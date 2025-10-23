@@ -2,7 +2,7 @@
 export const getGradeColor = (grade: string) => {
   switch (grade) {
     case '레전더리':
-      return 'border-red-400 bg-red-50 text-red-800';
+      return 'border-green-400 bg-green-50 text-green-800';
     case '유니크':
       return 'border-yellow-400 bg-yellow-50 text-yellow-800';
     case '에픽':
