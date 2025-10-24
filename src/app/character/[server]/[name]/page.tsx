@@ -25,6 +25,7 @@ export default async function CharacterPage({
   const guildName = await getGuild(ocid);
 
   const formatDate = (dateString: string) => {
+    if (!dateString) return '';
     return new Date(dateString).toLocaleDateString('ko-KR', {
       year: 'numeric',
       month: 'long',
@@ -35,6 +36,7 @@ export default async function CharacterPage({
   };
 
   const formatExp = (exp: number) => {
+    if (!exp) return '';
     return exp.toLocaleString('ko-KR');
   };
 
