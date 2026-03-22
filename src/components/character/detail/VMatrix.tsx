@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { getVMatrix } from '@/app/api/character';
-import { CharacterVMatrix, VCoreEquipment } from '@/model/character/v-matrix';
+import {useEffect, useState} from 'react';
+import {getVMatrix} from '@/app/api/character';
+import {CharacterVMatrix, VCoreEquipment} from '@/model/character/v-matrix';
 
-export default function VMatrix({ ocid }: { ocid: string }) {
+export default function VMatrix({ocid}: {ocid: string}) {
   const [vMatrix, setVMatrix] = useState<CharacterVMatrix | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -91,28 +91,26 @@ export default function VMatrix({ ocid }: { ocid: string }) {
 
   const renderVCore = (core: VCoreEquipment) => {
     const skillNames = [
-      core.v_core_skill_name_1,
-      core.v_core_skill_name_2,
-      core.v_core_skill_name_3,
+      core.vcore_skill_name1,
+      core.vcore_skill_name2,
+      core.vcore_skill_name3,
     ].filter((skill) => skill && skill !== '(Unknown)');
 
     return (
       <div
         key={core.slot_id}
-        className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow"
-      >
+        className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
         <div className="flex items-start justify-between mb-3">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <h3 className="font-bold text-lg text-gray-800 truncate">
-                {core.v_core_name}
+                {core.vcore_name}
               </h3>
               <span
                 className={`px-2 py-1 rounded text-xs font-medium border ${getCoreTypeColor(
-                  core.v_core_type
-                )}`}
-              >
-                {getCoreTypeText(core.v_core_type)}
+                  core.vcore_type,
+                )}`}>
+                {getCoreTypeText(core.vcore_type)}
               </span>
             </div>
             <div className="flex items-center gap-4 text-sm text-gray-600">
@@ -120,9 +118,8 @@ export default function VMatrix({ ocid }: { ocid: string }) {
               <span>•</span>
               <span
                 className={`px-2 py-1 rounded text-xs font-medium ${getSlotLevelColor(
-                  core.slot_level
-                )}`}
-              >
+                  core.slot_level,
+                )}`}>
                 슬롯 Lv.{core.slot_level}
               </span>
             </div>
@@ -130,10 +127,9 @@ export default function VMatrix({ ocid }: { ocid: string }) {
           <div className="text-right">
             <div
               className={`text-xl font-bold ${getCoreLevelColor(
-                core.v_core_level
-              )}`}
-            >
-              Lv.{core.v_core_level}
+                core.vcore_level,
+              )}`}>
+              Lv.{core.vcore_level}
             </div>
           </div>
         </div>
@@ -155,13 +151,16 @@ export default function VMatrix({ ocid }: { ocid: string }) {
   };
 
   // 코어 타입별로 그룹화
-  const coresByType = vMatrix.character_v_core_equipment.reduce((acc, core) => {
-    if (!acc[core.v_core_type]) {
-      acc[core.v_core_type] = [];
-    }
-    acc[core.v_core_type].push(core);
-    return acc;
-  }, {} as Record<string, VCoreEquipment[]>);
+  const coresByType = vMatrix.character_v_core_equipment.reduce(
+    (acc, core) => {
+      if (!acc[core.vcore_type]) {
+        acc[core.vcore_type] = [];
+      }
+      acc[core.vcore_type].push(core);
+      return acc;
+    },
+    {} as Record<string, VCoreEquipment[]>,
+  );
 
   // 타입별 정렬 (Skill -> Enhancement -> Special)
   const typeOrder = ['Skill', 'Enhancement', 'Special'];
@@ -206,7 +205,7 @@ export default function VMatrix({ ocid }: { ocid: string }) {
             <div className="text-2xl font-bold text-green-600">
               {
                 vMatrix.character_v_core_equipment.filter(
-                  (core) => core.v_core_level >= 25
+                  (core) => core.vcore_level >= 25,
                 ).length
               }
             </div>
