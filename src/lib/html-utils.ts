@@ -6,6 +6,7 @@
  * HTML 콘텐츠를 정리하고 스타일링을 개선합니다
  */
 export function processContent(html: string): string {
+  if (!html) return '';
   let processed = html;
 
   // 메이플스토리M 특화 스타일링 적용
@@ -44,6 +45,7 @@ export function processContent(html: string): string {
  * 날짜를 한국어 형식으로 포맷팅합니다
  */
 export function formatKoreanDate(dateString: string): string {
+  if (!dateString) return '';
   const date = new Date(dateString);
   return date.toLocaleDateString('ko-KR', {
     year: 'numeric',
