@@ -24,7 +24,7 @@ export default function Home() {
         </div>
 
         {/* 기능 소개 섹션 */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -40,7 +40,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+          {/* <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🏰</span>
@@ -53,7 +53,7 @@ export default function Home() {
                 수 있습니다.
               </p>
             </div>
-          </div>
+          </div> */}
 
           <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
@@ -69,47 +69,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div> */}
-
-        {/* 통계 섹션 */}
-        {/* {/* <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">
-            서비스 현황
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">1,234</div>
-              <div className="text-gray-600">조회된 캐릭터</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">567</div>
-              <div className="text-gray-600">조회된 길드</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">89</div>
-              <div className="text-gray-600">진행중 이벤트</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">
-                24/7
-              </div>
-              <div className="text-gray-600">실시간 업데이트</div>
-            </div>
-          </div>
-        </div> */}
-      </main>
-
-      {/* 푸터 */}
-      <footer className="bg-gray-800 text-white py-8 mt-20">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400">
-            © 2024 메이플스토리M 트래커. 모든 권리 보유.
-          </p>
-          <p className="text-gray-500 text-sm mt-2">
-            이 서비스는 메이플스토리M의 비공식 팬 사이트입니다.
-          </p>
         </div>
-      </footer>
+      </main>
     </div>
   );
 }

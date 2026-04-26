@@ -10,6 +10,7 @@ export default function Navigation() {
     { name: '공지사항', href: '/notices', icon: '📢' },
     { name: '패치노트', href: '/patchnotes', icon: '📝' },
     { name: '진행중 이벤트', href: '/events', icon: '🎉' },
+    { name: '서비스 소개', href: '/about', icon: 'ℹ️' },
   ];
 
   return (
